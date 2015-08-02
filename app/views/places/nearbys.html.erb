@@ -1,13 +1,29 @@
 <h2>Places near <%= @distance %> km from <%= @place.address %></h2>
 
 <%= render 'nearby_form' %>
+<br>
 
 <% if @nearbys.any? %>
-  <ul>
-  <% @nearbys.each do |place| %>
-    <li><%= link_to place.address, nearbys_place_path(place, distance: @distance) %></li>
-  <% end %>
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Address</th>
+        <th>Distance</th>
+        <th>Bearing</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @nearbys.each do |place| %>
+        <tr>
+          <td><%= link_to place.address, nearbys_place_path(place, distance: @distance) %></td>
+          <td><%= place.distance.round(2) %> km</td>
+          <td><%= place.bearing.round(2) %>°</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
 <% else %>
   <p>No results</p>
 <% end %>

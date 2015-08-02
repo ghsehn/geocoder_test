@@ -1,5 +1,5 @@
 class PlacesController < ApplicationController
-  before_action :set_place, only: [:show, :edit, :update, :destroy]
+  before_action :set_place, only: [:show, :edit, :update, :destroy, :nearbys]
 
   # GET /places
   # GET /places.json
@@ -61,10 +61,15 @@ class PlacesController < ApplicationController
     end
   end
 
+  def nearbys
+    @nearbys = @place.nearbys(@distance)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_place
       @place = Place.find(params[:id])
+      @distance = params[:distance]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,0 +1,15 @@
+<h2>Places near <%= @distance %> km from <%= @place.address %></h2>
+
+<%= render 'nearby_form' %>
+
+<% if @nearbys.any? %>
+  <ul>
+  <% @nearbys.each do |place| %>
+    <li><%= place.address %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>No results</p>
+<% end %>
+
+<%= link_to 'Back', @place %>

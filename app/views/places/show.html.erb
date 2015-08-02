@@ -15,5 +15,16 @@
   <%= @place.longitude %>
 </p>
 
+<iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="<%= @place.google_maps_embed_url %>" allowfullscreen>
+</iframe>
+
+<h4>Search places nearby</h4>
+<%= render 'nearby_form' %>
+<br>
+
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>

@@ -5,7 +5,7 @@
 <% if @nearbys.any? %>
   <ul>
   <% @nearbys.each do |place| %>
-    <li><%= place.address %></li>
+    <li><%= link_to place.address, nearbys_place_path(place, distance: @distance) %></li>
   <% end %>
   </ul>
 <% else %>

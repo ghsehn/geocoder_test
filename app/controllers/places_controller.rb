@@ -1,4 +1,5 @@
 class PlacesController < ApplicationController
+  http_basic_authenticate_with name: ENV['USERNAME'], password: env['PASSWORD']
   before_action :set_place, only: [:show, :edit, :update, :destroy, :nearbys]
 
   # GET /places
